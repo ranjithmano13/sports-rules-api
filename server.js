@@ -5,30 +5,207 @@ const port = 3001;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/public', express.static('public'));
 
 const sports = [
-  { id: 1, name: "Football" },
-  { id: 2, name: "Basketball" },
-  { id: 3, name: "Baseball" },
-  { id: 4, name: "Tennis" },
-  { id: 5, name: "Badminton" },
-  { id: 6, name: "Kabaddi" },
-  { id: 7, name: "Volleyball" },
-  { id: 8, name: "Athletics" },
-  { id: 9, name: "Golf" },
-  { id: 10, name: "Swimming" },
-  { id: 11, name: "Tabletennis" },
-  { id: 12, name: "Cricket" },
-  { id: 13, name: "Rugby" },
-  { id: 14, name: "Boxing" },
-  { id: 15, name: "Icehockey" },
-  { id: 16, name: "Cycling" },
-  { id: 17, name: "Wrestling" },
-  { id: 18, name: "Surfing" },
-  { id: 19, name: "Gymnastics" },
-  { id: 20, name: "Skiing" },
-  { id: 21, name: "Archery" },
-  { id: 22, name: "Martial Arts" },
+  {
+    id: 1,
+    name: "Football",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/football1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/football2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/football3.jpg",
+    },
+  },
+  {
+    id: 2,
+    name: "Basketball",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/basketball1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/basketball2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/basketball3.jpg",
+    },
+  },
+  {
+    id: 3,
+    name: "Baseball",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/baseball1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/baseball2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/baseball3.jpg",
+    },
+  },
+  {
+    id: 4,
+    name: "Tennis",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/tennis1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/tennis2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/tennis3.jpg",
+    },
+  },
+  {
+    id: 5,
+    name: "Badminton",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/badminton1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/badminton2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/badminton3.jpg",
+    },
+  },
+  {
+    id: 6,
+    name: "Kabaddi",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/kabaddi1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/kabaddi2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/kabaddi3.jpg",
+    },
+  },
+  {
+    id: 7,
+    name: "Volleyball",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/volleyball1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/volleyball2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/volleyball3.jpg",
+    },
+  },
+  {
+    id: 8,
+    name: "Athletics",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/athletics1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/athletics2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/athletics3.jpg",
+    },
+  },
+  {
+    id: 9,
+    name: "Golf",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/golf1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/golf2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/golf3.jpg",
+    },
+  },
+  {
+    id: 10,
+    name: "Swimming",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/swimming1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/swimming2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/swimming3.jpg",
+    },
+  },
+  {
+    id: 11,
+    name: "Tabletennis",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/tabletennis1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/tabletennis2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/tabletennis3.jpg",
+    },
+  },
+  {
+    id: 12,
+    name: "Cricket",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/cricket1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/cricket2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/cricket3.jpg",
+    },
+  },
+  {
+    id: 13,
+    name: "Rugby",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/rugby1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/rugby2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/rugby3.jpg",
+    },
+  },
+  {
+    id: 14,
+    name: "Boxing",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/boxing1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/boxing2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/boxing3.jpg",
+    },
+  },
+  {
+    id: 15,
+    name: "Icehockey",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/icehockey1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/icehockey2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/icehockey3.jpg",
+    },
+  },
+  {
+    id: 16,
+    name: "Cycling",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/cycling1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/cycling2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/cycling3.jpg",
+    },
+  },
+  {
+    id: 17,
+    name: "Wrestling",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/wrestling1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/wrestling2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/wrestling3.jpg",
+    },
+  },
+  {
+    id: 18,
+    name: "Surfing",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/surfing1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/surfing2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/surfing3.jpg",
+    },
+  },
+  {
+    id: 19,
+    name: "Gymnastics",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/gymnastics1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/gymnastics2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/gymnastics3.jpg",
+    },
+  },
+  {
+    id: 20,
+    name: "Skiing",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/skiing1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/skiing2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/skiing3.jpg",
+    },
+  },
+  {
+    id: 21,
+    name: "Archery",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/archery1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/archery2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/archery3.jpg",
+    },
+  },
+  {
+    id: 22,
+    name: "Martial Arts",
+    image: {
+      imgUrl1: "http://sports-rules.onrender.com/public/martialarts1.jpg",
+      imgUrl2: "http://sports-rules.onrender.com/public/martialarts2.jpg",
+      imgUrl3: "http://sports-rules.onrender.com/public/martialarts3.jpg",
+    },
+  },
 ];
 
 const sportsData = {
@@ -337,6 +514,11 @@ const sportsData = {
           "A defensive strategy where players guard specific areas of the court rather than individual opponents.",
       },
     ],
+    image: {
+      imgUrl1: "public\basketball1.jpg",
+      imgUrl2: "public\basketball2.jpg",
+      imgUrl3: "public\basketball3.jpg",
+    },
   },
   3: {
     name: "Baseball",
@@ -1063,33 +1245,44 @@ const sportsData = {
     governingBody: "International Ice Hockey Federation (IIHF)",
     rinkFeatures: ["Goals", "Faceoff circles", "Neutral zone", "Penalty boxes"],
   },
-  16:{
-  name: "Cycling",
-  category: "Outdoor",
-  equipment: ["Bicycle", "Helmet", "Cycling shoes", "Cycling jersey"],
-  terrain: "Roads, trails, tracks",
-  objective: "Cycling involves riding a bicycle to cover distances, compete in races, or for recreational purposes.",
-  facts: [
-    "Cycling is a popular outdoor activity and a means of transportation.",
-    "It offers various disciplines, including road cycling, mountain biking, and track cycling.",
-    "Professional cycling events like the Tour de France attract worldwide attention.",
-    "Cycling promotes cardiovascular fitness and endurance.",
-    "Bicycles come in different types, such as road bikes, mountain bikes, and BMX bikes.",
-    "Cyclists use different techniques, including pedaling, cornering, and drafting.",
-    "The Union Cycliste Internationale (UCI) is the governing body for the sport.",
-    "Cycling can be an eco-friendly mode of transportation, reducing carbon emissions.",
-    "Many cities have dedicated cycling lanes and cycling-friendly infrastructure.",
-    "Cycling is suitable for people of all ages and fitness levels.",
-  ],
-  famousCyclists: ["Eddy Merckx", "Lance Armstrong", "Marianne Vos", "Chris Froome"],
-  majorEvents: ["Tour de France", "UCI Road World Championships", "Olympic Games"],
-  governingBody: "Union Cycliste Internationale (UCI)",
-},
-17:{
+  16: {
+    name: "Cycling",
+    category: "Outdoor",
+    equipment: ["Bicycle", "Helmet", "Cycling shoes", "Cycling jersey"],
+    terrain: "Roads, trails, tracks",
+    objective:
+      "Cycling involves riding a bicycle to cover distances, compete in races, or for recreational purposes.",
+    facts: [
+      "Cycling is a popular outdoor activity and a means of transportation.",
+      "It offers various disciplines, including road cycling, mountain biking, and track cycling.",
+      "Professional cycling events like the Tour de France attract worldwide attention.",
+      "Cycling promotes cardiovascular fitness and endurance.",
+      "Bicycles come in different types, such as road bikes, mountain bikes, and BMX bikes.",
+      "Cyclists use different techniques, including pedaling, cornering, and drafting.",
+      "The Union Cycliste Internationale (UCI) is the governing body for the sport.",
+      "Cycling can be an eco-friendly mode of transportation, reducing carbon emissions.",
+      "Many cities have dedicated cycling lanes and cycling-friendly infrastructure.",
+      "Cycling is suitable for people of all ages and fitness levels.",
+    ],
+    famousCyclists: [
+      "Eddy Merckx",
+      "Lance Armstrong",
+      "Marianne Vos",
+      "Chris Froome",
+    ],
+    majorEvents: [
+      "Tour de France",
+      "UCI Road World Championships",
+      "Olympic Games",
+    ],
+    governingBody: "Union Cycliste Internationale (UCI)",
+  },
+  17: {
     name: "Wrestling",
     category: "Combat",
     weightClasses: ["Lightweight", "Middleweight", "Heavyweight"],
-    objective: "Wrestling involves grappling techniques to gain control over an opponent and win the match.",
+    objective:
+      "Wrestling involves grappling techniques to gain control over an opponent and win the match.",
     facts: [
       "Wrestling is one of the oldest combat sports, dating back to ancient civilizations.",
       "It requires strength, agility, and technique.",
@@ -1104,16 +1297,26 @@ const sportsData = {
     ],
     equipment: ["Wrestling singlet", "Wrestling shoes", "Headgear"],
     techniques: ["Takedowns", "Pinning", "Escapes", "Throws"],
-    famousWrestlers: ["Dan Gable", "Alexander Karelin", "Saori Yoshida", "John Smith"],
-    majorTournaments: ["Olympic Games", "World Wrestling Championships", "NCAA Wrestling Championships"],
+    famousWrestlers: [
+      "Dan Gable",
+      "Alexander Karelin",
+      "Saori Yoshida",
+      "John Smith",
+    ],
+    majorTournaments: [
+      "Olympic Games",
+      "World Wrestling Championships",
+      "NCAA Wrestling Championships",
+    ],
     governingBody: "United World Wrestling (UWW)",
   },
-  18:{
+  18: {
     name: "Surfing",
     category: "Water",
     equipment: ["Surfboard", "Wetsuit", "Leash", "Wax"],
     waves: "Ocean, sea",
-    objective: "Surfing involves riding waves using a surfboard and performing maneuvers.",
+    objective:
+      "Surfing involves riding waves using a surfboard and performing maneuvers.",
     facts: [
       "Surfing originated in ancient Polynesia and gained popularity worldwide.",
       "It is a physically demanding sport that requires balance, skill, and wave knowledge.",
@@ -1126,15 +1329,25 @@ const sportsData = {
       "Surfing culture has its own fashion, music, and lifestyle.",
       "Surfing is a popular recreational activity and a form of relaxation for many.",
     ],
-    famousSurfers: ["Kelly Slater", "Stephanie Gilmore", "Bethany Hamilton", "Mick Fanning"],
-    majorCompetitions: ["World Surf League (WSL)", "ISA World Surfing Games", "Big Wave Tour"],
+    famousSurfers: [
+      "Kelly Slater",
+      "Stephanie Gilmore",
+      "Bethany Hamilton",
+      "Mick Fanning",
+    ],
+    majorCompetitions: [
+      "World Surf League (WSL)",
+      "ISA World Surfing Games",
+      "Big Wave Tour",
+    ],
     governingBody: "International Surfing Association (ISA)",
   },
-  19:{
+  19: {
     name: "Gymnastics",
     category: "Artistic",
     apparatuses: ["Vault", "Uneven bars", "Balance beam", "Floor exercise"],
-    objective: "Gymnastics combines strength, flexibility, and acrobatic skills to perform routines on various apparatuses.",
+    objective:
+      "Gymnastics combines strength, flexibility, and acrobatic skills to perform routines on various apparatuses.",
     facts: [
       "Gymnastics is an ancient sport with a rich history.",
       "It requires balance, coordination, agility, and discipline.",
@@ -1149,16 +1362,26 @@ const sportsData = {
     ],
     equipment: ["Leotard", "Grips", "Chalk", "Rings"],
     techniques: ["Tumbling", "Dismounts", "Balance poses", "Release moves"],
-    famousGymnasts: ["Simone Biles", "Nadia Comaneci", "Kohei Uchimura", "Olga Korbut"],
-    majorCompetitions: ["Olympic Games", "World Artistic Gymnastics Championships", "FIG World Cup"],
+    famousGymnasts: [
+      "Simone Biles",
+      "Nadia Comaneci",
+      "Kohei Uchimura",
+      "Olga Korbut",
+    ],
+    majorCompetitions: [
+      "Olympic Games",
+      "World Artistic Gymnastics Championships",
+      "FIG World Cup",
+    ],
     governingBody: "International Gymnastics Federation (FIG)",
   },
-  20:{
+  20: {
     name: "Skiing",
     category: "Winter",
     equipment: ["Skis", "Ski boots", "Poles", "Goggles"],
     terrain: "Snow-covered slopes",
-    objective: "Skiing involves gliding down snow-covered slopes using skis and poles.",
+    objective:
+      "Skiing involves gliding down snow-covered slopes using skis and poles.",
     facts: [
       "Skiing is a popular winter sport and recreational activity.",
       "It can be done in various forms, including alpine skiing, cross-country skiing, and freestyle skiing.",
@@ -1171,11 +1394,20 @@ const sportsData = {
       "Ski resorts provide facilities such as ski lifts and chalets for skiers.",
       "Skiing can be an exhilarating and thrilling experience for enthusiasts.",
     ],
-    famousSkiers: ["Lindsey Vonn", "Ingemar Stenmark", "Mikaela Shiffrin", "Aksel Lund Svindal"],
-    majorEvents: ["Alpine Ski World Cup", "Winter Olympics", "FIS Nordic World Ski Championships"],
+    famousSkiers: [
+      "Lindsey Vonn",
+      "Ingemar Stenmark",
+      "Mikaela Shiffrin",
+      "Aksel Lund Svindal",
+    ],
+    majorEvents: [
+      "Alpine Ski World Cup",
+      "Winter Olympics",
+      "FIS Nordic World Ski Championships",
+    ],
     governingBody: "International Ski Federation (FIS)",
   },
- 21: {
+  21: {
     name: "Archery",
     category: "Outdoor",
     equipment: ["Bow", "Arrows", "Armguard", "Finger tab"],
@@ -1193,16 +1425,32 @@ const sportsData = {
       "Archery can be practiced both indoors and outdoors.",
       "The sport has been included in the Olympic Games for many years.",
     ],
-    techniques: ["Stance", "Nocking the arrow", "Drawing", "Aiming", "Releasing"],
-    famousArchers: ["Brady Ellison", "Ki Bo-bae", "Michele Frangilli", "Deepika Kumari"],
-    majorTournaments: ["Olympic Games", "World Archery Championships", "World Cup"],
+    techniques: [
+      "Stance",
+      "Nocking the arrow",
+      "Drawing",
+      "Aiming",
+      "Releasing",
+    ],
+    famousArchers: [
+      "Brady Ellison",
+      "Ki Bo-bae",
+      "Michele Frangilli",
+      "Deepika Kumari",
+    ],
+    majorTournaments: [
+      "Olympic Games",
+      "World Archery Championships",
+      "World Cup",
+    ],
     governingBody: "World Archery Federation (WA)",
   },
-  22:{
+  22: {
     name: "Martial Arts",
     category: "Combat",
     techniques: ["Strikes", "Kicks", "Throws", "Submissions"],
-    objective: "Martial arts encompass a variety of combat practices and techniques used for self-defense, sport, or personal development.",
+    objective:
+      "Martial arts encompass a variety of combat practices and techniques used for self-defense, sport, or personal development.",
     facts: [
       "Martial arts originated in various cultures and have diverse philosophies and training methods.",
       "They include disciplines such as karate, taekwondo, judo, jiu-jitsu, and kung fu.",
@@ -1215,17 +1463,23 @@ const sportsData = {
       "Many martial arts schools and dojos offer training for practitioners of all ages and skill levels.",
       "Martial arts are popular worldwide, and practitioners often dedicate themselves to lifelong learning.",
     ],
-    famousMartialArtists: ["Bruce Lee", "Jackie Chan", "Helio Gracie", "Jet Li"],
-    majorCompetitions: ["Olympic Games (Judo and Taekwondo)", "World Championships", "Professional Mixed Martial Arts (MMA)"],
-    governingBodies: ["International Judo Federation (IJF)", "World Taekwondo (WT)", "International Brazilian Jiu-Jitsu Federation (IBJJF)"],
+    famousMartialArtists: [
+      "Bruce Lee",
+      "Jackie Chan",
+      "Helio Gracie",
+      "Jet Li",
+    ],
+    majorCompetitions: [
+      "Olympic Games (Judo and Taekwondo)",
+      "World Championships",
+      "Professional Mixed Martial Arts (MMA)",
+    ],
+    governingBodies: [
+      "International Judo Federation (IJF)",
+      "World Taekwondo (WT)",
+      "International Brazilian Jiu-Jitsu Federation (IBJJF)",
+    ],
   },
-
-  
-  
-  
-  
-  
-
 };
 
 app.get("/sports", (req, res) => {
